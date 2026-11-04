@@ -211,3 +211,12 @@ body{background:var(--fuera)}
 .welcome-card::before,.welcome-card::after,main#main-content::before,main#main-content::after{content:none}
 .hero-section{padding-top:70px}
 .final-section{padding-bottom:90px}
+
+
+/* ---------- FONDO PROPIO DE LA BIENVENIDA ---------- */
+:root{
+  --bienvenida-texto:#1b365d;   /* color del nombre y los textos del sobre. Si el fondo es oscuro, poné #ffffff */
+}
+.welcome-card{background:var(--fondo) url("fondo-bienvenida.jpg") center / cover no-repeat}
+.welcome-name,.welcome-sub,.welcome-instruction{color:var(--bienvenida-texto)}
+.welcome-name{-webkit-text-stroke-color:var(--bienvenida-texto)}
