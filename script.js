@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const minutesEl = document.getElementById("minutes");
 
     // 09 de febrero de 2027, 21:00 (Argentina)
-    const eventDate = new Date("2027-02-09T21:00:00-03:00").getTime();
+    const eventDate = new Date("2027-02-13T21:00:00-03:00").getTime();
     const pad = function (n) { return String(n).padStart(2, "0"); };
 
     function updateCountdown() {
