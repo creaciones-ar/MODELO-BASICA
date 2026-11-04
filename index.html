@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Allura&family=Mrs+Saint+Delafield&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Monsieur+La+Doulaise&family=Courier+Prime&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=37">
+    <link rel="stylesheet" href="alias.css?v=1">
 </head>
 <body class="welcome-active">
 
@@ -156,13 +157,24 @@
             <div class="rsvp-container">
                 <h3 class="script-title fit-title" data-fit="rsvp" data-max="72" data-min="18">Confirmación de asistencia</h3>
                 <p class="rsvp-desc">¡Te espero para compartir la alegría de este gran día!</p>
-                <a href="https://wa.me/+5491100000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Liliana." target="_blank" rel="noopener" class="btn-silver big">Confirmar</a>
+                <!-- Cambiá 5491100000000 por el número real (54 9 + código de área sin 0 ni 15 + número) -->
+                <a href="https://wa.me/5491100000000?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Liliana." target="_blank" rel="noopener" class="btn-silver big">Confirmar</a>
                 <p class="rsvp-note">Confirmar antes del 1 de Octubre</p>
             </div>
         </section>
 
     </main>
 
+    <!-- ===== VENTANA DEL ALIAS (regalos) ===== -->
+    <dialog id="alias-modal" class="alias-modal" aria-labelledby="alias-title">
+        <button type="button" class="alias-close" id="alias-close" aria-label="Cerrar">&times;</button>
+        <h3 id="alias-title">Regalos</h3>
+        <p class="alias-label">Alias</p>
+        <p class="alias-text" id="alias-text">Lililuces.mp</p>
+        <button type="button" id="alias-copy" class="alias-copy">Copiar alias</button>
+    </dialog>
+
     <script src="script.js?v=8"></script>
+    <script src="alias.js?v=1"></script>
 </body>
 </html>
