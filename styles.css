@@ -25,7 +25,7 @@ a{color:inherit}
 button,a{-webkit-tap-highlight-color:transparent}
 button:focus-visible,a:focus-visible{outline:3px solid var(--plateado);outline-offset:5px}
 
-/* ---------- 2. MARCO (bienvenida y contenido) ----------
+/* ---------- 2. MARCO (solo el contenido; la bienvenida tiene su propio fondo) ----------
    arriba (flores) + medio (se repite y se ajusta solo al largo) + abajo (flores).
    Si querés más/menos aire entre el borde brillante y los textos, cambiá --lado. */
 .marco{position:relative;background:var(--fondo)}
@@ -38,7 +38,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--plateado);outline-o
 /* ---------- 3. PANTALLA DE BIENVENIDA ---------- */
 #welcome-screen{position:fixed;inset:0;z-index:999999;display:flex;justify-content:center;align-items:stretch;text-align:center;color:var(--texto);background:linear-gradient(180deg,#e9f0f8 0%,var(--fuera) 100%);transition:opacity .7s ease,visibility .7s ease}
 #welcome-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.welcome-card{width:min(100%,560px);margin:0 auto;padding:24px var(--lado);display:flex;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 0 50px rgba(16,36,66,.22)}
+.welcome-card{position:relative;width:min(100%,560px);margin:0 auto;padding:24px var(--lado);display:flex;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 0 50px rgba(16,36,66,.22);
+  background:var(--fondo) url("fondo-bienvenida.jpg") center/cover no-repeat}  /* fondo exclusivo de la bienvenida */
 .welcome-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:100%;max-width:420px}
 .welcome-name{font-family:"Mrs Saint Delafield",cursive;font-weight:400;font-size:clamp(7.5rem,32vw,12rem);line-height:1;color:var(--azul);-webkit-text-stroke:.5px var(--azul)}
 .welcome-sub{font-family:"Cinzel","Times New Roman",serif;font-size:clamp(1.05rem,4.8vw,1.4rem);font-weight:500;letter-spacing:4px;text-transform:uppercase;margin:18px 0 34px;color:var(--azul)}
@@ -119,11 +120,11 @@ main#main-content > section{position:relative;z-index:1}
 /* ---------- 8. FECHA ---------- */
 .date-section{padding-top:50px;padding-bottom:30px}
 .month-label{font-size:clamp(1.1rem,4vw,1.4rem);letter-spacing:6px;padding-left:6px;font-weight:500;margin-bottom:16px}
-.date-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(8px,3vw,28px);width:100%}
+.date-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(5px,1.8vw,12px);width:100%;padding:0 6%} /* gap chico: "Martes" y la hora quedan pegados a las líneas */
 .side-label{font-size:clamp(.66rem,2.7vw,1rem);letter-spacing:clamp(1px,.4vw,3px);text-transform:uppercase;font-weight:500;white-space:nowrap}
-.side-label.left{text-align:right}
+.side-label.left{text-align:right;margin-right:calc(-1*clamp(1px,.4vw,3px))} /* compensa el espacio que deja el letter-spacing después de la última letra */
 .side-label.right{text-align:left}
-.date-frame{padding:4px clamp(12px,4.5vw,36px) 18px;border-left:1.5px solid var(--texto);border-right:1.5px solid var(--texto)}
+.date-frame{padding:4px clamp(10px,4vw,30px) 18px;border-left:1.5px solid var(--texto);border-right:1.5px solid var(--texto)}
 .date-frame h2{font-family:var(--sans);font-weight:300;font-size:clamp(4rem,15vw,5.6rem);letter-spacing:2px;line-height:1;color:var(--azul-suave)}
 .year-label{font-size:clamp(.9rem,3.4vw,1.15rem);letter-spacing:5px;padding-left:5px;font-weight:500;margin-top:-4px}
 
