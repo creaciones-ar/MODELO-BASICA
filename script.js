@@ -12,14 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.getElementById("progress-bar");
 
     // =====================================================
-    //  TAMAÑO DE LA LETRA DEL MENSAJE ("Hoy dejo atrás...")
-    //  Cambiá solo este número:
-    //    1   = el texto ocupa el mismo alto que las fotos (letra chica)
-    //    1.5 = letra más grande (valor actual)
-    //    1.8 = todavía más grande
-    //    2   = bien grande
+    //  TAMAÑO DE LA LETRA DEL MENSAJE ("Dejo atrás...")
+    //    1 = mismo alto que las fotos | 1.5 = más grande | 2 = bien grande
     // =====================================================
     const MESSAGE_SCALE = 1;
+
+    // Cuánto dura la animación del sobre antes de entrar a la invitación (milisegundos)
+    const OPEN_DELAY = 3600;
 
     // Diagnóstico: abrí la página con ?debug=1 al final del link para ver el error de audio
     function debugMsg(text) {
@@ -29,8 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- ABRIR EL SOBRE ----------
+    // 1) la música arranca con el toque  2) el sobre se abre y muestra la carta  3) entra la invitación
     if (openBtn) {
         openBtn.addEventListener("click", function () {
+            if (openBtn.classList.contains("is-open")) return;      // evita doble toque
+            openBtn.classList.add("is-open");
+            welcomeScreen.classList.add("opening");
+
             if (music) {
                 music.play().catch(function (error) {
                     console.log("No se pudo reproducir la música:", error);
@@ -38,11 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     syncPlayerState();
                 });
             }
-            welcomeScreen.classList.add("hidden");
-            mainContent.classList.remove("hidden");
-            document.body.classList.remove("welcome-active");
-            window.scrollTo(0, 0);
-            requestAnimationFrame(fitAll);
+
+            setTimeout(function () {
+                welcomeScreen.classList.add("hidden");
+                mainContent.classList.remove("hidden");
+                document.body.classList.remove("welcome-active");
+                window.scrollTo(0, 0);
+                requestAnimationFrame(fitAll);
+            }, OPEN_DELAY);
         });
     }
 
@@ -73,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (best !== Infinity) list.forEach(function (el) { el.style.fontSize = best + "px"; });
         });
     }
+
     // ---------- MENSAJE: tamaño de letra según el alto de las fotos ----------
     function fitMessage() {
         document.querySelectorAll(".hero-side").forEach(function (row) {
@@ -91,6 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     function fitAll() { fitTitles(); fitMessage(); }
+
+    // La pantalla de bienvenida también ajusta su título apenas carga
+    fitTitles();
 
     let fitTimer;
     window.addEventListener("resize", function () {
@@ -173,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const minutesEl = document.getElementById("minutes");
 
     // 09 de febrero de 2027, 21:00 (Argentina)
-    const eventDate = new Date("2027-02-13T21:00:00-03:00").getTime();
+    const eventDate = new Date("2027-02-09T21:00:00-03:00").getTime();
     const pad = function (n) { return String(n).padStart(2, "0"); };
 
     function updateCountdown() {
