@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const MESSAGE_SCALE = 1;
 
     // Cuánto dura la animación del sobre antes de entrar a la invitación (milisegundos)
-    const OPEN_DELAY = 3600;
+    const OPEN_DELAY = 2900;
 
     // Diagnóstico: abrí la página con ?debug=1 al final del link para ver el error de audio
     function debugMsg(text) {
@@ -28,11 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- ABRIR EL SOBRE ----------
-    // 1) la música arranca con el toque  2) el sobre se abre y muestra la carta  3) entra la invitación
+    // Tocar el sello: suena la música, se rompe el sello, se abre la solapa, sube la carta y entra la invitación
     if (openBtn) {
         openBtn.addEventListener("click", function () {
-            if (openBtn.classList.contains("is-open")) return;      // evita doble toque
-            openBtn.classList.add("is-open");
+            const env = document.getElementById("envelope");
+            if (env.classList.contains("open")) return;             // evita doble toque
+            env.classList.add("open");
             welcomeScreen.classList.add("opening");
 
             if (music) {
