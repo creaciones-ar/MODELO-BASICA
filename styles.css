@@ -43,10 +43,61 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--plateado);outline-o
 .welcome-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:100%;max-width:420px}
 .welcome-name{font-family:"Mrs Saint Delafield",cursive;font-weight:400;font-size:clamp(7.5rem,32vw,12rem);line-height:1;color:var(--azul);-webkit-text-stroke:.5px var(--azul)}
 .welcome-sub{font-family:"Cinzel","Times New Roman",serif;font-size:clamp(1.05rem,4.8vw,1.4rem);font-weight:500;letter-spacing:4px;text-transform:uppercase;margin:18px 0 34px;color:var(--azul)}
-.envelope-btn{background:transparent;border:none;cursor:pointer;width:min(62vw,280px);filter:drop-shadow(0 12px 18px rgba(27,54,93,.25));transition:transform .25s ease}
-.envelope-btn:hover{transform:translateY(-4px) scale(1.02)}
-.envelope-btn:active{transform:scale(.98)}
-.envelope-img{width:100%;height:auto}
+/* ----- Sobre que se abre al tocar el sello (como el de Isabella, en azul) ----- */
+.envelope{position:relative;width:min(76vw,340px);aspect-ratio:3/2;margin:22px 0 10px;perspective:1100px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 18px 26px rgba(27,54,93,.4))}
+.envelope>*{position:absolute}
+.env-back{inset:0;background:linear-gradient(#7f9fc9,#7090bb);border-radius:6px;z-index:1}
+.env-l,.env-r,.env-b{inset:0;z-index:3}
+.env-l{background:linear-gradient(90deg,#b0c8e6,#9bb8dc);clip-path:polygon(0 0,52% 52%,0 100%);border-radius:6px 0 0 6px}
+.env-r{background:linear-gradient(270deg,#b0c8e6,#9bb8dc);clip-path:polygon(100% 0,48% 52%,100% 100%);border-radius:0 6px 6px 0}
+.env-b{background:linear-gradient(#bcd2ec,#a2bddf);clip-path:polygon(0 100%,50% 46%,100% 100%);border-radius:0 0 6px 6px}
+.env-flap{left:0;top:0;width:100%;height:56%;background:linear-gradient(#cfdef2,#a6bfe0);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;z-index:5;transition:transform .9s cubic-bezier(.5,0,.2,1) .35s,background .9s .35s}
+.env-letter{left:6%;right:6%;top:7%;height:88%;z-index:2;background:linear-gradient(#fff,#eef4fb);border-radius:4px;box-shadow:0 2px 8px rgba(27,54,93,.25);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:14%;gap:4px;color:var(--azul);transition:transform 1.1s cubic-bezier(.3,.7,.2,1) 1.2s}
+.letter-small{font-family:"Cinzel","Times New Roman",serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase}
+.letter-name{font-family:"Allura",cursive;font-size:2.5rem;line-height:1.1;-webkit-text-stroke:.3px var(--azul)}
+.letter-line{width:46px;height:1px;background:var(--plateado-oscuro)}
+
+/* Bordes (marco fino + ornamentos de esquina) y destellos sobre el sobre */
+.env-orn{inset:0;z-index:6;pointer-events:none}
+.env-orn::before{content:"";position:absolute;inset:7px;border:1.2px solid rgba(255,255,255,.8);border-radius:4px;transition:opacity .5s}
+.orn{position:absolute;width:52px;height:52px;fill:none;stroke:rgba(255,255,255,.95);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;overflow:visible;transition:opacity .4s}
+.orn-tl{left:5px;top:5px}
+.orn-tr{right:5px;top:5px;transform:scaleX(-1)}
+.orn-bl{left:5px;bottom:5px;transform:scaleY(-1)}
+.orn-br{right:5px;bottom:5px;transform:scale(-1,-1)}
+.sp{position:absolute;width:var(--s,14px);height:var(--s,14px);left:var(--x);top:var(--y);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.95));opacity:.2;animation:twinkle 2.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.s1{--x:14%;--y:24%;--s:16px;--d:0s}
+.s2{--x:80%;--y:16%;--s:12px;--d:.7s}
+.s3{--x:28%;--y:64%;--s:10px;--d:1.3s}
+.s4{--x:84%;--y:58%;--s:18px;--d:.4s}
+.s5{--x:11%;--y:78%;--s:11px;--d:1.9s}
+.s6{--x:62%;--y:80%;--s:13px;--d:1.1s}
+.s7{--x:71%;--y:40%;--s:9px;--d:2.2s}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.5) rotate(0)}50%{opacity:1;transform:scale(1) rotate(20deg)}}
+
+/* Sello plateado con la inicial */
+.seal{left:50%;top:56%;width:62px;height:62px;margin:-31px 0 0 -31px;z-index:7;border:0;border-radius:50%;cursor:pointer;display:grid;place-items:center;-webkit-tap-highlight-color:transparent;
+  background:radial-gradient(circle at 32% 28%,#fff 0,#eef1f6 20%,#b5bfce 55%,#7f8b9f 100%);
+  box-shadow:0 5px 12px rgba(27,54,93,.5),inset 0 2px 3px rgba(255,255,255,.9),inset 0 -4px 6px rgba(60,75,100,.45);
+  transition:transform .45s ease,opacity .45s ease}
+.seal span{font-family:"Allura",cursive;font-size:1.7rem;line-height:1;color:#4f5c75;text-shadow:0 1px 0 rgba(255,255,255,.85),0 -1px 0 rgba(40,55,80,.25);display:block;transform:translate(0,1px);pointer-events:none}
+.seal::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,255,255,.9);animation:ring 1.8s ease-out infinite;pointer-events:none}
+.seal::after{content:"";position:absolute;inset:11%;border-radius:50%;border:1.5px solid rgba(70,85,110,.45);box-shadow:inset 0 2px 4px rgba(60,75,100,.35),0 1px 0 rgba(255,255,255,.7);pointer-events:none}
+@keyframes ring{from{transform:scale(.85);opacity:.9}to{transform:scale(1.5);opacity:0}}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* Estado abierto: se rompe el sello, se abre la solapa y sube la carta */
+.envelope.open{animation:none}
+.envelope.open .seal{transform:scale(1.5) rotate(12deg);opacity:0;pointer-events:none}
+.envelope.open .seal::before{animation:none}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:1;background:linear-gradient(#8fa9c9,#7f9cc4)}
+.envelope.open .env-letter{transform:translateY(-52%)}
+.envelope.open .env-orn::before,.envelope.open .orn-tl,.envelope.open .orn-tr{opacity:0}
+#welcome-screen.opening .welcome-name,#welcome-screen.opening .welcome-sub,#welcome-screen.opening .welcome-instruction{opacity:0;animation:none;transition:opacity .5s ease}
+#welcome-screen.opening .envelope{transition:transform 1s ease 1.4s;transform:translateY(40px)}
+.welcome-instruction{opacity:0;animation:none;transition:opacity .5s ease}
 .welcome-instruction{margin-top:30px;font-size:.95rem;letter-spacing:3px;font-weight:500;color:var(--azul);animation:parpadeo 2.4s ease-in-out infinite}
 @keyframes parpadeo{50%{opacity:.45}}
 
