@@ -7,13 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Allura&family=Mrs+Saint+Delafield&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Monsieur+La+Doulaise&family=Courier+Prime&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=39">
+    <link rel="stylesheet" href="styles.css?v=40">
 </head>
 <body class="welcome-active">
 
     <!-- ===== PANTALLA DE ENTRADA ===== -->
     <div id="welcome-screen">
-        <div class="welcome-card">
+        <div class="welcome-card marco">
+            <div class="marco-lados" aria-hidden="true"></div>
             <div class="welcome-content">
                 <h2 class="welcome-name fit-line" data-fit="welcome" data-max="190" data-min="60">Liliana</h2>
                 <p class="welcome-sub">Mis XV años</p>
@@ -34,7 +35,8 @@
     </audio>
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
-    <main id="main-content" class="hidden">
+    <main id="main-content" class="marco hidden">
+        <div class="marco-lados" aria-hidden="true"></div>
 
         <!-- Sección 1: tiara, nombre, reproductor, "Mis 15 años", mensaje + polaroids -->
         <section class="hero-section">
@@ -83,13 +85,13 @@
             </div>
         </section>
 
-        <!-- Sección 2: fecha -->
+        <!-- Sección 2: fecha (9 de febrero de 2027 es MARTES) -->
         <section class="date-section">
             <p class="month-label">febrero</p>
             <div class="date-row">
-                <span class="side-label left">Sábado</span>
+                <span class="side-label left">Martes</span>
                 <div class="date-frame">
-                    <h2>13</h2>
+                    <h2>09</h2>
                     <p class="year-label">2027</p>
                 </div>
                 <span class="side-label right">21:00 HS</span>
@@ -114,7 +116,9 @@
                 <img src="foto3.jpg?v=2" alt="Salón Costa Eventos" class="torn-edge-photo">
             </div>
             <div class="location-content-box">
-                <div class="icon-container"><img src="icono4.gif" alt="" class="section-gif-icon"></div>
+                <div class="icon-container">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58C32 58 14 40 14 26a18 18 0 0 1 36 0c0 14-18 32-18 32z"/><circle cx="32" cy="26" r="7"/><path class="sp" d="M53 7l1.6 4.4L59 13l-4.4 1.6L53 19l-1.6-4.4L47 13l4.4-1.6z"/></svg>
+                </div>
                 <h3 class="script-title small fit-title" data-fit="loc" data-max="46" data-min="18">Lugar del evento</h3>
                 <p class="location-name">Fiesta Evento</p>
                 <a href="https://www.google.com/maps/place/Costa+Eventos/@-40.8708992,-62.9267436,17z/data=!4m6!3m5!1s0x95f69ba4b6e3d8ef:0x5a9873fe41a518b2!8m2!3d-40.8708597!4d-62.9241029!16s%2Fg%2F11q3sqxfh7?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn-silver big">Ubicación</a>
@@ -124,7 +128,9 @@
         <!-- Sección 5: dress code y regalos -->
         <section class="info-section">
             <div class="info-block">
-                <div class="icon-container"><img src="icono3.gif" alt="" class="section-gif-icon"></div>
+                <div class="icon-container">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 6l-3 22-9 30h40l-9-30-3-22"/><path d="M21 28h22"/><path d="M24 6c2 5 14 5 16 0"/><path class="sp" d="M52 8l1.6 4.4L58 14l-4.4 1.6L52 20l-1.6-4.4L46 14l4.4-1.6z"/></svg>
+                </div>
                 <h3 class="script-title fit-title" data-fit="info" data-max="64" data-min="18">Dress Code</h3>
                 <p class="info-text">Casual</p>
                 <div class="forbidden">
@@ -139,7 +145,9 @@
             </div>
 
             <div class="info-block">
-                <div class="icon-container"><img src="icono2.gif" alt="" class="section-gif-icon"></div>
+                <div class="icon-container">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="24" width="44" height="12" rx="2"/><path d="M14 36v20h36V36M32 24v32"/><path d="M32 24c-8 0-13-6-9-10s9 2 9 10zm0 0c8 0 13-6 9-10s-9 2-9 10z"/><path class="sp" d="M54 8l1.6 4.4L60 14l-4.4 1.6L54 20l-1.6-4.4L48 14l4.4-1.6z"/></svg>
+                </div>
                 <h3 class="script-title gift-title fit-title" data-fit="info" data-max="64" data-min="18">¡El mejor regalo es tu presencia!</h3>
                 <p class="info-text">Pero si deseas hacerme un obsequio, puedes hacerlo mediante el siguiente</p>
                 <p class="alias-label">ALIAS:</p>
@@ -158,7 +166,7 @@
             <div class="rsvp-container">
                 <h3 class="script-title fit-title" data-fit="rsvp" data-max="72" data-min="18">Confirmación de asistencia</h3>
                 <p class="rsvp-desc">¡Te espero para compartir la alegría de este gran día!</p>
-                <a href="https://wa.me/5491121825254?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20%20de%20Liliana." target="_blank" rel="noopener" class="btn-silver big">Confirmar</a>
+                <a href="https://wa.me/5491121825254?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Liliana." target="_blank" rel="noopener" class="btn-silver big">Confirmar</a>
                 <p class="rsvp-note">Confirmar antes del 1 de Febrero</p>
             </div>
         </section>
