@@ -97,7 +97,6 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--plateado);outline-o
 .envelope.open .env-orn::before,.envelope.open .orn-tl,.envelope.open .orn-tr{opacity:0}
 #welcome-screen.opening .welcome-name,#welcome-screen.opening .welcome-sub,#welcome-screen.opening .welcome-instruction{opacity:0;animation:none;transition:opacity .5s ease}
 #welcome-screen.opening .envelope{transition:transform 1s ease 1.4s;transform:translateY(40px)}
-.welcome-instruction{opacity:0;animation:none;transition:opacity .5s ease}
 .welcome-instruction{margin-top:30px;font-size:.95rem;letter-spacing:3px;font-weight:500;color:var(--azul);animation:parpadeo 2.4s ease-in-out infinite}
 @keyframes parpadeo{50%{opacity:.45}}
 
